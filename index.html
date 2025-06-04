@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style2.css">
+	<script src="app2.js" defer></script>
+	<title>JS</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="section">
+			<div class="section_title">Input type CheckBox:</div>
+			<div class="section_inner section-inner-checkBox">
+				<input class="checkBox" type="checkbox" id="checkBox"><p id="checkBoxText">Not Active</p>
+			</div>
+
+			<div class="section_title">Input type Radio:</div>
+			<div class="section_inner section-inner-radio">
+				<div class="input_radion_btn_inner">
+					<div class="input_radio_inner">
+						<input class="checkBox" type="radio" name="radio"><span class="radio_span"> 0</span>
+						<input class="checkBox" type="radio" name="radio"><span class="radio_span"> 1</span>
+						<input class="checkBox" type="radio" name="radio"><span class="radio_span"> 2</span>
+					</div>
+					<button class="radioBtn" id="radioBtn">Which element is selected ?</button>
+				</div>
+				<p class="radio_text" id="radioText">Select an item</p>
+			</div>
+		
+			<div class="section_title">Select:</div>
+			<div class="section_inner section-inner-select">
+				<select class="select" name="" id="select">
+					<option value="">Apple</option>
+					<option value="">Samsung</option>
+					<option value="">Xiaomi</option>
+					<option value="">Nokia</option>
+				</select>
+				<p id="selectText">Selected option: Apple</p>
+			</div>
+
+			<div class="section_title">Input type Range:</div>
+			<div class="section_inner section-inner-range">
+				<div class="range_input_number_inner">
+					<div class="input_range_inner">
+						<!-- Робота з Input: Range -->
+						<input class="range_item" type="range" min="0" max="200" step="1" id="range" value="100">
+						<input class="range_item" type="number" id="rangeNumber" value="100" min="0" max="200">
+					</div>
+					<div class="range_square_size" id="rangeSize"></div>
+				</div>
+				<div class="radio_text range-text">
+					<p>Specify the width</p>
+					<p>of the Square</p>
+				</div>
+			</div>
+
+			<div class="section_title">Border Radius generator:</div>
+			<div class="section_inner section-inner-border-radius">
+				<div class="border_radius_inner">
+					<div class="border_radius_item">
+						<div class="border_radius_text">Top left corner:</div>
+						<div class="range_number_inner">
+							<input type="range" min="0" max="150" value="0" id="rangeTopLeft" class="range_item input-range-item">
+							<input type="number" min="0" max="150" value="0" id="textTopLeft" class="range_item">
+						</div>
+					</div>
+					<div class="border_radius_item">
+						<div class="border_radius_text">Top right corner:</div>
+						<div class="range_number_inner">
+							<input type="range" min="0" max="150" value="0" id="rangeTopRight" class="range_item input-range-item">
+							<input type="number" min="0" max="150" value="0" id="textTopRight" class="range_item">
+						</div>
+					</div>
+					<div class="border_radius_item">
+						<div class="border_radius_text">Bottom left corner:</div>
+						<div class="range_number_inner">
+							<input type="range" min="0" max="150" value="0" id="rangeBottomLeft" class="range_item input-range-item">
+							<input type="number" min="0" max="150" value="0" id="textBottomLeft" class="range_item">
+						</div>
+					</div>
+					<div class="border_radius_item">
+						<div class="border_radius_text">Bottom right corner:</div>
+						<div class="range_number_inner">
+							<input type="range" min="0" max="150" value="0" id="rangeBottomRight" class="range_item input-range-item">
+							<input type="number" min="0" max="150" value="0" id="textBottomRight" class="range_item">
+						</div>
+					</div>
+				</div>
+				<div class="border_radius_square" id="borderRadiusSquare"></div>
+			</div>
+
+			<div class="section_title">Drop-Down Menu:</div>
+			<div class="section_inner section-inner-drop-down-menu">
+				<div class="drop_down_menu">
+					<div class="drop_down_inner">
+						<div class="drop_down_logo"></div>
+						<nav class="drop_down_nav">
+							<div class="drop_down_nav_item">
+								<div class="drop_down_name">Choose a city</div>
+								<div class="drop_down_nav_submenu">
+									<div class="drop_down_nav_submenu_text">Lviv</div>
+									<div class="drop_down_nav_submenu_text">Kyiv</div>
+									<div class="drop_down_nav_submenu_text">Kharkiv</div>
+									<div class="drop_down_nav_submenu_text">Odesa</div>
+								</div>
+							</div>
+							<div class="drop_down_nav_item">
+								<div class="drop_down_name">Choose a language</div>
+								<div class="drop_down_nav_submenu">
+									<div class="drop_down_nav_submenu_text">Українська</div>
+									<div class="drop_down_nav_submenu_text">English</div>
+									<div class="drop_down_nav_submenu_text">Polski</div>
+								</div>
+							</div>
+							<div class="drop_down_nav_item">
+								<div class="drop_down_name">Select the payment type</div>
+								<div class="drop_down_nav_submenu">
+									<div class="drop_down_nav_submenu_text">Cash</div>
+									<div class="drop_down_nav_submenu_text">Bank card</div>
+									<div class="drop_down_nav_submenu_text">Online payment</div>
+									<div class="drop_down_nav_submenu_text">Bank transfer</div>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Tabs:</div>
+			<div class="section_inner">
+				<div class="tabs">
+					<div class="tabs_inner">
+						<div class="tab" data-tab="#tab_1">Tab 1</div>
+						<div class="tab" data-tab="#tab_2">Tab 2</div>
+						<div class="tab" data-tab="#tab_3">Tab 3</div>
+					</div>
+					<div class="tabs_content_inner">
+						<div class="tabs_content" id="tab_1">Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Omnis itaque tempora exercitationem consequatur, delectus totam. Est cumque nulla nesciunt officiis sit dolorem in natus neque maxime, architecto ad doloribus. Nobis.</div>
+						<div class="tabs_content" id="tab_2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, maiores? Labore soluta aspernatur ea fugit hic veritatis unde dolorum non tenetur asperiores quam blanditiis aut, distinctio. Ex, consequuntur ipsam voluptatem.</div>
+						<div class="tabs_content" id="tab_3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, sapiente tenetur modi similique deleniti nulla pariatur nisi laboriosam hic harum magnam quibusdam libero aut explicabo ea vitae expedita reiciendis, accusantium.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Modal Window:</div>
+			<div class="section_inner">
+				<div class="modal_btn" id="modalOpenBtn">Open Modal Window</div>
+				<div class="modal" id="modalWindow">
+					<div class="modal_inner">
+						<div class="modal_header">
+							<div class="modal_name">Modal window:</div>
+							<img src="close-black.png" class="modal_close" id="modalCloseBtn" alt="">
+						</div>
+						<div class="modal_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem perspiciatis provident autem, necessitatibus neque laudantium beatae sint consequatur porro ad fugiat molestias velit quasi ex quia, labore nulla nostrum?</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Move Animation:</div>
+			<div class="section_inner section-animation-inner">
+				<div class="animation_square_inner">
+					<div class="animation_square" id="animationSquare"></div>
+				</div>
+				<div class="animation_btn" id="animationBtn">Move</div>
+			</div>
+
+			<div class="section_title">Slider:</div>
+			<div class="section_inner section-slider-inner">
+				<div class="slider_inner">
+					<div class="slider_item">
+						<div class="slider_number">1/3</div>
+						<img src="ruslan3.jpg" class="slider_img" alt="">
+					</div>
+					<div class="slider_item">
+						<div class="slider_number">2/3</div>
+						<img src="ruslan2.jpg" class="slider_img" alt="">
+					</div>
+					<div class="slider_item">
+						<div class="slider_number">3/3</div>
+						<img src="ruslan1.jpg" class="slider_img" alt="">
+					</div>
+					<div class="slider_btn slider_btn_prev" id="sliderPrev"></div>
+					<div class="slider_btn slider_btn_next" id="sliderNext"></div>
+				</div>
+				<div class="slider_dots_inner">
+					<div class="slider_dot slider_dot_active"></div>
+					<div class="slider_dot"></div>
+					<div class="slider_dot"></div>
+				</div>
+			</div>
+
+			<div class="section_title">User Filtering:</div>
+			<div class="section_inner">
+				<div class="filter_inner">
+					<input placeholder="User name" type="text" class="filter_input" id="filterInput">
+					<div class="filter_user_list" id="filterUserList">
+						<div class="filter_user filter-user-empty">Download...</div>
+						<!-- <div class="filter_user"></div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Calculator:</div>
+			<div class="section_inner section-calculator-inner">
+				<div class="calculator_input_inner">
+				<input type="number" class="input" id="inputCalculator1" value="10" placeholder="Enter first number">
+				<input type="number" class="input" id="inputCalculator2" value="10" placeholder="Enter second number">
+			</div>
+			<div class="calculator_operators_inner">
+				<div class="operator" id="plusClaculator">+</div>
+				<div class="operator operator-red" id="minusClaculator">-</div>
+				<div class="operator operator-orange" id="multiplicationClaculator">•</div>
+				<div class="operator operator-blue" id="divisionClaculator">/</div>
+			</div>
+			<div class="calculator_calculate_btn" id="submitCalculator">Choose an action</div>
+				<div class="calculator_result_inner">
+					<div class="result_text">Result:</div>
+					<div class="result" id="resultCalculator">0</div>
+				</div>
+			</div>
+
+			<div class="section_title">Modal Images:</div>
+			<div class="section_inner">
+				<div class="">
+					<img src="ruslan3.jpg" class="slider_img modal-img" alt="Ruslan Spanchak">
+					<img src="ruslan2.jpg" class="slider_img modal-img" alt="Ruslan Spanchak with Glasses">
+					<img src="ruslan1.jpg" class="slider_img modal-img" alt="Ruslan Spanchak and Friends">
+				</div>
+				<div class="modal" id="modalImagesWindow">
+					<div class="modal_img_inner" id="modalImgInner">
+						<img src="ruslan3.jpg" class="modal_img_large" id="modalImg" alt="">
+						<div class="modal_img_caption" id="modalImgCaption"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Progress Bar:</div>
+			<div class="section_inner section-progress-bar-inner">
+				<div class="progress_inner" id="progressBarInner">
+					<div class="progress_bar" id="progressBar">
+						<div class="progress_label" id="progressLabel">0%</div>
+					</div>
+				</div>
+				<div class="progress_btn" id="progressBtn">Start</div>
+				<div class="progress_btn progress-reset-btn" id="progressResetBtn">Reset</div>
+			</div>
+
+			<div class="section_title">Popup:</div>
+			<div class="section_inner">
+				<div class="popup_inner">
+					<div class="popup_item">
+						<div class="popup_content">Average score based on user ratings</div>
+						<div class="popup_name">
+							Rating
+						</div>
+					</div>
+					<div class="popup_item">
+						<div class="popup_content">Premium access opens up additional features</div>
+						<div class="popup_name">
+							Premium
+						</div>
+					</div>
+					<div class="popup_item">
+						<div class="popup_content">Product available in store: Kyiv, Lviv, Odesa</div>
+						<div class="popup_name">
+							Availability
+						</div>
+					</div>
+					<div class="popup_item">
+						<div class="popup_content">Discount valid until May 31</div>
+						<div class="popup_name">
+							Discount
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Accordion:</div>
+			<div class="section_inner">
+				<div class="accordion_inner">
+					<div class="accordion_item">
+						<div class="accordion_title border-rounded-top">
+							<div class="accordion_name">Section 1</div>
+							<div class="accordion_arrow"></div>
+						</div>
+						<div class="accordion_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum sed eos repellendus ad, ut mollitia, molestias. Nam laborum, quam itaque officia! Nisi fuga quod porro commodi ipsam rerum perspiciatis vero?</div>
+					</div>
+					<div class="accordion_item">
+						<div class="accordion_title">
+							<div class="accordion_name">Section 2</div>
+							<div class="accordion_arrow"></div>
+						</div>
+						<div class="accordion_content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod consectetur officiis id, sunt fuga vel aliquid deleniti, sit similique animi nemo nostrum reiciendis eligendi ex ad odio magnam, aut quam.</div>
+					</div>
+					<div class="accordion_item">
+						<div class="accordion_title">
+							<div class="accordion_name">Section 3</div>
+							<div class="accordion_arrow"></div>
+						</div>
+						<div class="accordion_content border-rounded-bottom">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae non doloribus omnis facilis incidunt reiciendis architecto voluptate fugit maxime, saepe quis nihil expedita consequuntur culpa suscipit laboriosam, quaerat placeat nemo.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">Currency Conventer:</div>
+			<div class="section_inner">
+				<div class="conventer_inner">
+					<div class="conventer_item">
+						<div class="conventer_currency_inner">
+							<div class="currency_side">
+								<img src="european-union.png" alt="" class="currency_img">
+								<div class="currency_name">EUR</div>
+							</div>
+							<div class="currency_side">
+								<div class="currency_arrow"></div>
+							</div>
+						</div>
+						<div class="conventer_currency_choose_inner">
+							<div class="currency_choose_item">
+								<img src="ukraine.png" alt="" class="currency_img">
+								<div class="currency_full_name">Українська Гривня</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="european-union.png" alt="" class="currency_img">
+								<div class="currency_full_name">Euro</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="united-states.png" alt="" class="currency_img">
+								<div class="currency_full_name">US Dollar</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="japan.png" alt="" class="currency_img">
+								<div class="currency_full_name">Japanese Yen</div>
+							</div>
+						</div>
+						<input type="number" class="conventer_input">
+					</div>
+					<div class="conventer_arrow">
+						<img src="money.png" class="conventer_arrow_img" alt="">
+					</div>
+					<div class="conventer_item">
+						<div class="conventer_currency_inner">
+							<div class="currency_side">
+								<img src="united-states.png" alt="" class="currency_img">
+								<div class="currency_name">USD</div>
+							</div>
+							<div class="currency_side">
+								<div class="currency_arrow"></div>
+							</div>
+						</div>
+						<div class="conventer_currency_choose_inner">
+							<div class="currency_choose_item">
+								<img src="ukraine.png" alt="" class="currency_img">
+								<div class="currency_full_name">Українська Гривня</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="european-union.png" alt="" class="currency_img">
+								<div class="currency_full_name">Euro</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="united-states.png" alt="" class="currency_img">
+								<div class="currency_full_name">US Dollar</div>
+							</div>
+							<div class="currency_choose_item">
+								<img src="japan.png" alt="" class="currency_img">
+								<div class="currency_full_name">Japanese Yen</div>
+							</div>
+						</div>
+						<input type="number" class="conventer_input">
+					</div>
+				</div>
+			</div>
+
+			<div class="section_title">To Do List:</div>
+			<div class="section_inner">
+				<div class="todo_inner">
+					<input type="text" class="input" placeholder="Enter a name" id="toDoInput">
+					<div class="calculator_calculate_btn" id="toDoAddBtn">Add</div>
+					<div class="todo_items_inner" id="toDoList">
+						<!-- <div class="todo_item">
+							<div class="todo_name">Ruslan Spanchak</div>
+							<div class="todo_btns_inner">
+								<div class="todo_btn todo-check-btn">
+									<img src="check.png" alt="">
+								</div>
+								<div class="todo_btn todo-delete-btn">
+									<img src="close.png" alt="">
+								</div>
+							</div>
+						</div> -->
+						<div class="todo_item todo-empty">
+							<div class="todo_name todo-name-empty">There are no items yet :(</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
