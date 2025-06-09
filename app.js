@@ -6,29 +6,21 @@ const radio = document.getElementsByName('radio')
 const radioBtn = document.getElementById('radioBtn')
 const radioText = document.getElementById('radioText')
 
-checkBox.addEventListener("change", function() {
-	checkCheckBox()
-})
-
-function checkCheckBox() {
-	if (checkBox.checked) {
-		checkBoxText.innerText = 'Active'
+checkBox.addEventListener("click", () => {
+	if(checkBox.checked) {
+		checkBoxText.textContent = 'Active'
 	} else {
-		checkBoxText.innerText = 'Not Active'
+		checkBoxText.textContent = 'Not Active'
 	}
-}
-
-radioBtn.addEventListener("click", function() {
-	checkRadio()
 })
 
-function checkRadio() {
+radioBtn.addEventListener("click", () => {
 	for (let i = 0; i < radio.length; i++) {
 		if (radio[i].checked) {
-			radioText.innerText = 'Selected ' + i + ' element'
+			radioText.textContent = 'Selected ' + i + ' element'
 		}
 	}
-}
+})
 
 // ---------- Select та Input: Range
 const select = document.getElementById('select')
@@ -38,35 +30,19 @@ const range = document.getElementById('range')
 const rangeNumber = document.getElementById('rangeNumber')
 const rangeSize = document.getElementById('rangeSize')
 
-select.addEventListener("change", function(event) {
-	checkSelect(event)
+select.addEventListener("change", (event) => {
+	selectText.textContent = 'Selected option: ' + event.target.options[event.target.selectedIndex].text
 })
 
-function checkSelect(event) {
-	selectText.innerText = "Selected option: " + event.target.options[event.target.selectedIndex].text
-}
-
-range.addEventListener("input", function() {
-	inputValue()
-	changeSize()
-})
-
-rangeNumber.addEventListener("input", function() {
-	rangeValue()
-	changeSize()
-})
-
-function inputValue() {
+range.addEventListener("input", () => {
 	rangeNumber.value = range.value
-}
-
-function rangeValue() {
-	range.value = rangeNumber.value
-}
-
-function changeSize() {
 	rangeSize.style.width = range.value + 'px'
-}
+})
+
+rangeNumber.addEventListener("input", () => {
+	range.value = rangeNumber.value
+	rangeSize.style.width = range.value + 'px'
+})
 
 // ---------- Border Radius generator
 const rangeTopLeft = document.getElementById('rangeTopLeft')
@@ -123,15 +99,15 @@ textBottomRight.addEventListener("input", function() {
 // ---------- Drop-Down Menu
 const dropDownItems = document.querySelectorAll('.drop_down_nav_item')
 
-dropDownItems.forEach(function(item) {
+dropDownItems.forEach((item) => {
 	const dropDownSubMenu = item.querySelector('.drop_down_nav_submenu')
 
-	item.addEventListener("mouseenter", function() {
+	item.addEventListener("mouseenter", () => {
 		if (dropDownSubMenu) {
 			dropDownSubMenu.classList.add('drop_down_submenu_active')
 		}
 	})
-	item.addEventListener("mouseleave", function() {
+	item.addEventListener("mouseleave", () => {
 		if (dropDownSubMenu) {
 			dropDownSubMenu.classList.remove('drop_down_submenu_active')
 		}
@@ -143,17 +119,17 @@ const tabsBtn = document.querySelectorAll('.tab')
 const tabsContent = document.querySelectorAll('.tabs_content')
 const tabsContentInner = document.querySelector('.tabs_content_inner')
 
-tabsBtn.forEach(function(item) {
-	item.addEventListener("click", function() {
+tabsBtn.forEach((item) => {
+	item.addEventListener("click", () => {
 		const currentTabBtn = item
 		const tabId = currentTabBtn.getAttribute('data-tab')
 		const currentContent = document.querySelector(tabId)
 
 		if (!currentTabBtn.classList.contains('tab_active')) {
-			tabsBtn.forEach(function(item) {
+			tabsBtn.forEach((item) => {
 				item.classList.remove('tab_active')
 			})
-			tabsContent.forEach(function(item) {
+			tabsContent.forEach((item) => {
 				item.classList.remove('tabs_content_active')
 			})
 
@@ -176,18 +152,18 @@ const modalOpenBtn = document.getElementById('modalOpenBtn')
 const modalCloseBtn = document.getElementById('modalCloseBtn')
 const modalWindow = document.getElementById('modalWindow')
 
-modalOpenBtn.addEventListener("click", function() {
+modalOpenBtn.addEventListener("click", () => {
 	modalWindow.style.display = 'flex'
 	document.body.classList.add('modal-open')
 })
 
-modalCloseBtn.addEventListener("click", function() {
+modalCloseBtn.addEventListener("click", () => {
 	modalWindow.style.display = 'none'
 	document.body.classList.remove('modal-open')
 })
 
-window.addEventListener("click", function(event) {
-	if (event.target == modalWindow) {
+window.addEventListener("click", (event) => {
+	if (event.target === modalWindow) {
 		modalWindow.style.display = 'none'
 		document.body.classList.remove('modal-open')
 	}
@@ -212,18 +188,22 @@ let currentSlide = 0
 function showSlide(index) {
 	if (index >= slidesSlider.length) {
 		currentSlide = 0
-	} else if (index < 0) currentSlide = slidesSlider.length - 1
-	else {
+	} else if (index < 0) {
+		currentSlide = slidesSlider.length - 1
+	} else {
 		currentSlide = index
-	} 
+	}
 
 	slidesSlider.forEach((slide, i) => {
-		slide.style.display = i === currentSlide ? 'block' : 'none'
-		dotsSlider[i].classList.toggle('slider_dot_active', i === currentSlide)
+		if (i === currentSlide) {
+			slide.style.display = 'block'
+			dotsSlider[i].classList.add('slider_dot_active')
+		} else {
+			slide.style.display = 'none'
+			dotsSlider[i].classList.remove('slider_dot_active')
+		}
 	})
 }
-
-showSlide(currentSlide)
 
 nextBtn.addEventListener("click", () => {
 	showSlide(currentSlide + 1)
@@ -239,14 +219,16 @@ dotsSlider.forEach((dot, index) => {
 	})
 })
 
+showSlide(currentSlide)
+
 // ---------- User Filtering
 const filterUserList = document.getElementById('filterUserList')
 const filterInput = document.getElementById('filterInput')
 let filterUsersArray = []
 
-filterInput.addEventListener("input", function(event) {
+filterInput.addEventListener("input", (event) => {
 	const filterInputValue = event.target.value.toLowerCase()
-	const filteredUsers = filterUsersArray.filter(function(user) {
+	const filteredUsers = filterUsersArray.filter((user) => {
 		return user.name.toLowerCase().includes(filterInputValue)
 	})
 
@@ -254,7 +236,6 @@ filterInput.addEventListener("input", function(event) {
 })
 
 async function startUserFilter() {
-
 	try {
 		const resp = await fetch("https://jsonplaceholder.typicode.com/users")
 		const data = await resp.json()
@@ -267,18 +248,15 @@ async function startUserFilter() {
 		filterUserList.innerHTML = error
 		filterUserList.style.color = 'red'
 	}
-	
 }
 
-function renderUserList(users = []) {
-
-	if (users.length == 0) {
+function renderUserList(array = []) {
+	if (array.length === 0) {
 		filterUserList.innerHTML = `<div class="filter_user filter-user-empty">No users found :(</div>`
 	} else {
-		const htmlUserList = users.map(toHTMLuserList).join('')
-	filterUserList.innerHTML = htmlUserList
+		const htmlUserList = array.map(toHTMLuserList).join('')
+		filterUserList.innerHTML = htmlUserList
 	}
-
 }
 
 function toHTMLuserList(user) {
@@ -302,9 +280,9 @@ const operatorsBtns = document.querySelectorAll('.operator')
 
 let actionCalculator = null
 
-operatorsBtns.forEach(function(operator) {
-	operator.addEventListener("click", function() {
-		operatorsBtns.forEach(function(btn) {
+operatorsBtns.forEach((operator) => {
+	operator.addEventListener("click", () => {
+		operatorsBtns.forEach((btn) => {
 			btn.classList.remove('active')
 		})
 
@@ -312,22 +290,22 @@ operatorsBtns.forEach(function(operator) {
 	})
 })
 
-plusClaculator.addEventListener("click", function() {
+plusClaculator.addEventListener("click", () => {
 	actionCalculator = '+'
 	submitCalculator.textContent = 'Calculate addition'
 })
 
-minusClaculator.addEventListener("click", function() {
+minusClaculator.addEventListener("click", () => {
 	actionCalculator = '-'
 	submitCalculator.textContent = 'Calculate subtraction'
 })
 
-multiplicationClaculator.addEventListener("click", function() {
+multiplicationClaculator.addEventListener("click", () => {
 	actionCalculator = '*'
 	submitCalculator.textContent = 'Calculate multiplication'
 })
 
-divisionClaculator.addEventListener("click", function() {
+divisionClaculator.addEventListener("click", () => {
 	actionCalculator = '/'
 	submitCalculator.textContent = 'Calculate division'
 })
@@ -343,28 +321,34 @@ function computeNumbersWithAction(input1, input2, action) {
 	} else if (action === '*') {
 		return input1 * input2
 	} else if (action === '/') {
-		return input1 / input2
+		if (input2 === 0) {
+			return resultCalculator.textContent = 'You cannot divide by 0 !!!'
+		} else {
+			return input1 / input2
+		}
 	}
 }
 
-function printResultClaculator(printResult) {
-	if (printResult > 0) {
+function printResultClaculator(result) {
+	if (result > 0) {
 		resultCalculator.style.color = 'green'
-	} else if (printResult < 0) {
+	} else if (result < 0) {
 		resultCalculator.style.color = 'red'
-	} else if (printResult === 0) {
+	} else if (result === 0) {
 		resultCalculator.style.color = 'black'
+	} else if (resultCalculator.textContent === 'You cannot divide by 0 !!!') {
+		resultCalculator.style.color = 'red'
 	}
 
-	resultCalculator.textContent = printResult
+	resultCalculator.textContent = result
 }
 
-submitCalculator.addEventListener("click", function() {
+submitCalculator.addEventListener("click", () => {
 	const submitResult = computeNumbersWithAction(inputCalculator1, inputCalculator2, actionCalculator)
 
 	if (submitResult === undefined) {
-		resultCalculator.style.color = 'red'
 		resultCalculator.textContent = 'Choose an action'
+		resultCalculator.style.color = 'red'
 	} else {
 		printResultClaculator(submitResult)
 	}
@@ -377,8 +361,8 @@ const modalImgInner = document.getElementById('modalImgInner')
 const modalImg = document.getElementById('modalImg')
 const modalImgCaption = document.getElementById('modalImgCaption')
 
-modalImages.forEach(function(img) {
-	img.addEventListener("click", function() {
+modalImages.forEach((img) => {
+	img.addEventListener("click", () => {
 		modalImagesWindow.style.display = 'flex'
 		modalImg.src = img.src
 		modalImgCaption.textContent = img.alt
@@ -386,8 +370,8 @@ modalImages.forEach(function(img) {
 	})
 })
 
-window.addEventListener("click", function(event) {
-	if (event.target == modalImagesWindow || event.target == modalImgInner) {
+window.addEventListener("click", (event) => {
+	if (event.target === modalImagesWindow || event.target === modalImgInner) {
 		modalImagesWindow.style.display = 'none'
 		document.body.classList.remove('modal-open')
 	}
@@ -400,17 +384,17 @@ const progressLabel = document.getElementById('progressLabel')
 const progressBtn = document.getElementById('progressBtn')
 const progressResetBtn = document.getElementById('progressResetBtn')
 
-let progressCompleted = false
+let isProgressCompleted = false
 
 function progressMove() {
 	let progressWidth = 0
 	progressBar.style.backgroundColor = '#2196F3'
 	progressLabel.style.color = '#fff'
-	let progressInterval = setInterval(function() {
+	let progressInterval = setInterval(() => {
 		if (progressWidth === 100) {
 			clearInterval(progressInterval)
 			progressBar.style.backgroundColor = '#4CAF50'
-			progressCompleted = true
+			isProgressCompleted = true
 		} else {
 			progressWidth++
 			progressBar.style.width = progressWidth + '%'
@@ -422,41 +406,41 @@ function progressMove() {
 function progressReset() {
 	progressLabel.style.color = '#000'
 	progressLabel.textContent = '0%'
-	progressBar.style.width = 100 + '%'
 	progressBar.style.backgroundColor = '#fff'
+	progressBar.style.width = '100%'
 }
 
-function progressBarBtns(none, flex) {
-	none.style.display = 'none'
+function progressBtns(flex, none) {
 	flex.style.display = 'flex'
+	none.style.display = 'none'
 }
 
-progressBtn.addEventListener("click", function() {
-	progressBarBtns(progressBtn, progressResetBtn)
+progressBtn.addEventListener("click", () => {
 	progressMove()
+	progressBtns(progressResetBtn, progressBtn)
 })
 
-progressResetBtn.addEventListener("click", function() {
-	if (progressCompleted) {
-		progressBarBtns(progressResetBtn, progressBtn)
+progressResetBtn.addEventListener("click", () => {
+	if (isProgressCompleted) {
 		progressReset()
-		progressCompleted = false
+		progressBtns(progressBtn, progressResetBtn)
+		isProgressCompleted = false
 	}
 })
 
 // ---------- Popup
 const popupItems = document.querySelectorAll('.popup_item')
 
-popupItems.forEach(function(item) {
+popupItems.forEach((item) => {
 	const popupName = item.querySelector('.popup_name')
 	const popupContent = item.querySelector('.popup_content')
 
-	popupName.addEventListener("click", function(e) {
+	popupName.addEventListener("click", (e) => {
 		e.stopPropagation()
 
-		document.querySelectorAll('.popup_content').forEach(function(p) {
-			if (p !== popupContent) {
-				p.style.display = 'none'
+		document.querySelectorAll('.popup_content').forEach((content) => {
+			if (content != popupContent) {
+				content.style.display = 'none'
 			}
 		})
 
@@ -468,17 +452,17 @@ popupItems.forEach(function(item) {
 	})
 })
 
-document.addEventListener("click", function() {
-	document.querySelectorAll('.popup_content').forEach(function(p) {
-		p.style.display = 'none'
+document.addEventListener("click", () => {
+	document.querySelectorAll('.popup_content').forEach((content) => {
+		content.style.display = 'none'
 	})
 })
 
 // ---------- Accordion
 const accordionTitles = document.querySelectorAll('.accordion_title')
 
-accordionTitles.forEach(function(title) {
-	title.addEventListener("click", function() {
+accordionTitles.forEach((title) => {
+	title.addEventListener("click", () => {
 		const currentAccordionItem = title.closest('.accordion_item')
 		const accordionContent = currentAccordionItem.querySelector('.accordion_content')
 		const accordionArrow = title.querySelector('.accordion_arrow')
@@ -513,16 +497,16 @@ const exchangeRates = {
 
 const currencyBlocks = document.querySelectorAll('.conventer_item')
 
-currencyBlocks.forEach(function(block) {
+currencyBlocks.forEach((block) => {
 	const currencyInner = block.querySelector('.conventer_currency_inner')
 	const currencyChoose = block.querySelector('.conventer_currency_choose_inner')
-	const currencyName = currencyInner.querySelector('.currency_name')
+	const currencyName = block.querySelector('.currency_name')
 	const currencyInput = block.querySelector('.conventer_input')
 
-	currencyInner.addEventListener("click", function() {
-		const isVisible = currencyChoose.style.display === 'flex'
-		document.querySelectorAll('.conventer_currency_choose_inner').forEach(function(el) {
-			el.style.display = 'none'
+	currencyInner.addEventListener("click", () => {
+		isVisible = currencyChoose.style.display === 'flex'
+		document.querySelectorAll('.conventer_currency_choose_inner').forEach((element) => {
+			element.style.display = 'none'
 		})
 		if (isVisible) {
 			currencyChoose.style.display = 'none'
@@ -531,25 +515,32 @@ currencyBlocks.forEach(function(block) {
 		}
 	})
 
-	currencyChoose.querySelectorAll('.currency_choose_item').forEach(function(item) {
-		item.addEventListener("click", function() {
-			const newCurrency = item.querySelector('.currency_full_name')
+	currencyChoose.querySelectorAll('.currency_choose_item').forEach((item) => {
+		item.addEventListener("click", () => {
 			const newCode = 
 						item.querySelector('img').src.includes('european-union') ? 'EUR' :
 						item.querySelector('img').src.includes('ukraine') ? 'UAH' :
 						item.querySelector('img').src.includes('united-states') ? 'USD' : 'JPY'
 
 			currencyName.textContent = newCode
-			currencyInner.querySelector('img').src = item.querySelector('img').src
+			currencyInner.querySelector('.currency_img').src = item.querySelector('img').src
 			currencyChoose.style.display = 'none'
 
 			convert()
 		})
 	})
 
-	currencyInput.addEventListener("input", function() {
+	currencyInput.addEventListener("input", () => {
 		convert()
 	})
+})
+
+document.addEventListener("click", (e) => {
+	if (!e.target.closest('.conventer_currency_inner') && !e.target.closest('.conventer_currency_choose_inner')) {
+		document.querySelectorAll('.conventer_currency_choose_inner').forEach((element) => {
+			element.style.display = 'none'
+		})
+	}
 })
 
 function convert() {
@@ -568,17 +559,9 @@ function convert() {
 	}
 }
 
-document.addEventListener("click", function(e) {
-  	if (!e.target.closest('.conventer_currency_inner') && !e.target.closest('.conventer_currency_choose_inner')) {
-    	document.querySelectorAll('.conventer_currency_choose_inner').forEach(function(el) {
-    		el.style.display = 'none'
-    	})
-  	}
-})
-
 const conventerArrow = document.querySelector('.conventer_arrow_img')
 
-conventerArrow.addEventListener("click", function() {
+conventerArrow.addEventListener("click", () => {
 	conventerArrow.classList.toggle('active')
 
 	const block1 = currencyBlocks[0]
@@ -604,13 +587,9 @@ conventerArrow.addEventListener("click", function() {
 
 	input1.value = value2
 	input2.value = value1
-
-	convert()
 })
 
 currencyBlocks[0].querySelector('.conventer_input').value = 1
-currencyBlocks[1].querySelector('.conventer_input').value = ''
-
 convert()
 
 // ---------- To Do List
@@ -631,17 +610,15 @@ toDoAddBtn.addEventListener("click", () => {
 	}
 	toDoArray.push(newTask)
 
-	toDoRender()
-
 	toDoInput.value = ''
+	toDoRender()
 })
 
-toDoList.addEventListener("click", function(event) {
+toDoList.addEventListener("click", (event) => {
 	const target = event.target.closest('[data-index]')
 	if (target) {
-		const index = Number(target.dataset.index)
+		const index = target.dataset.index
 		const type = target.dataset.type
-
 		if (type === 'toggle') {
 			toDoArray[index].isCompleted = !toDoArray[index].isCompleted
 		} else if (type === 'delete') {
