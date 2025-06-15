@@ -651,10 +651,10 @@ function getTaskTemplate(task, index) {
 			<div class="todo_name ${task.isCompleted ? 'todo-name-through' : ''}">${task.title}</div>
 			<div class="todo_btns_inner">
 				<div data-index="${index}" data-type="toggle" class="todo_btn ${task.isCompleted ? 'todo-check-active-btn' : 'todo-check-btn'}">
-					<img src="check.png" alt="">
+					<img src="images/check.png" alt="">
 				</div>
 				<div data-index="${index}" data-type="delete" class="todo_btn todo-delete-btn">
-					<img src="close.png" alt="">
+					<img src="images/close.png" alt="">
 				</div>
 			</div>
 		</div>
